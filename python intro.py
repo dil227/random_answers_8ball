@@ -9,7 +9,7 @@ tab_Mindtree, tab_lorenz, tab_decision = st.tabs(
 with tab_Mindtree:
     st.title("MindTree")
     st.header("Step 1: Identify the emotion")
-
+#creating classes
     class Mood:
         def __init__(self, options):
             self.selected = st.multiselect("What do you feel?", options)
@@ -25,7 +25,7 @@ with tab_Mindtree:
             self.selected = st.multiselect(
                 "What is current pattern of your thoughts?", options
             )
-
+#creating list
     Context_options_Happy = [
         "Playful", "Content", "Interested", "Proud",
         "Accepted", "Powerful", "Peaceful", "Trusting"
@@ -215,26 +215,51 @@ False sense of responsibility: Believing we have more power than we actually do.
             "False sense of helplessness",
             "False sense of responsibility"
         ]
+        options = ["Read", "Activate Behaviour"]
+        selected_option = st.selectbox("What do you want to do?", options)
 
-        selected_distortion = st.multiselect(
-            "Which thinking error fits your thought best?",
-            distortions
-        )
+        if selected_option == "Read":
+            st.markdown(
+                "[Read more about flaws in human thinking](https://medium.com/@dilawarkhan97/flaws-in-human-thinking-63863a84cbb3)"
+            )
+
+        else:
+            st.header("Step 3: Activating a behaviour")
+
+            values_selected = st.multiselect(
+                "Which is stronger?",
+                ["Values", "Deadline"]
+            )
+
+            belief_selected = st.multiselect(
+                "Which is stronger?",
+                ["Expectation", "Resistance"]
+            )
+
 
 # ----------------- TAB 2: EXPECTATION MODEL -----------------
 with tab_lorenz:
     st.title("Expectation Model")
-
+    needs=[
+        "Physiological",
+        "Safety",
+        "Belonging",
+        "Esteem",
+        "Cognitive",
+        "Aesthetic",
+        "Self-actualization"
+    ]
+    motives = st.multiselect("What are your motives?", needs)
     intentions = st.text_input("What are your intentions?")
-    motives = st.text_input("What are your motives?")
     expectations = st.text_input("What are your expectations?")
     outcomes = st.text_input("What are the outcomes?")
     gradient = st.text_input("How does the difference make you feel?")
 
     if st.button("Show Reflection"):
         st.write(
-            f"So you intended to {intentions}, because of {motives}, "
-            f"and expected {expectations} but got {outcomes}, "
+            f"Motives are {motives}, "
+            f"intentions are {intentions}, "
+            f" You expected {expectations} but got {outcomes}, "
             f"and that made you feel {gradient}."
         )
 
