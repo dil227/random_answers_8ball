@@ -226,15 +226,22 @@ False sense of responsibility: Believing we have more power than we actually do.
         else:
             st.header("Step 3: Activating a behaviour")
 
-            values_selected = st.multiselect(
+            values_selected = st.radio(
                 "Which is stronger?",
-                ["Values", "Deadline"]
+                ["Values", "Deadline"],
+                key="values_vs_deadline"
             )
 
-            belief_selected = st.multiselect(
+            belief_selected = st.radio(
                 "Which is stronger?",
-                ["Expectation", "Resistance"]
+                ["Expectation", "Resistance"],
+                key="expectation_vs_resistance"
             )
+
+            if values_selected == "Values":
+                st.write("Positive reinforcement is encouraged")
+            else:
+                st.write("Negative reinforcement")
 
 
 # ----------------- TAB 2: EXPECTATION MODEL -----------------
